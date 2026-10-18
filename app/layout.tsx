@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const agency = process.env.AGENCY_NAME || "Mi Agencia";
   return (
-    <html lang="es">
+    <html lang="es" suppressHydrationWarning>
       <body>
         <header className="topbar no-print">
           <nav className="nav">
