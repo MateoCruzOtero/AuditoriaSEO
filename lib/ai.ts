@@ -6,10 +6,14 @@ import type { AiInsights, DomainMetrics, GapRow, KeywordRow, SiteAudit } from ".
 // Claude convierte los números en lenguaje de dueño de negocio y escribe el
 // mensaje de contacto. Si no hay ANTHROPIC_API_KEY, usamos una plantilla.
 
-const MODEL = "claude-opus-5-5";
+export const MODEL = "claude-opus-5-5";
 // Precio por millón de tokens (USD) para estimar el costo de cada informe.
 const PRICE_INPUT_PER_MTOK = 4;
 const PRICE_OUTPUT_PER_MTOK = 20;
+
+export function estimateCostUsd(usage: { input_tokens: number; output_tokens: number }) {
+  return (usage.input_tokens * PRICE_INPUT_PER_MTOK + usage.output_tokens * PRICE_OUTPUT_PER_MTOK) / 1_000_000;
+}
 
 const InsightsSchema = z.object({
   resumen: z.string(),
@@ -94,9 +98,7 @@ ${JSON.stringify(
     ],
   });
 
-  const usage = response.usage;
-  const costUsd =
-    (usage.input_tokens * PRICE_INPUT_PER_MTOK + usage.output_tokens * PRICE_OUTPUT_PER_MTOK) / 1_000_000;
+  const costUsd = estimateCostUsd(response.usage);
 
   if (response.stop_reason === "refusal" || !response.parsed_output) {
     // Nunca dejamos al usuario sin informe: caemos a la plantilla.

@@ -32,7 +32,7 @@ export default async function ReportPage({ params }: { params: Promise<{ id: str
   return (
     <>
       <div className="row no-print" style={{ marginBottom: "1rem" }}>
-        <Link href="/">← Volver</Link>
+        <Link href="/prospectos">← Volver</Link>
         <span className="spacer" />
         <PrintButton />
       </div>

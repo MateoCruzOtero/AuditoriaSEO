@@ -1,8 +1,8 @@
 {
-  "name": "prospector-seo",
+  "name": "radar-competencia",
   "version": "0.1.0",
   "private": true,
-  "description": "Prospector SEO: analiza un dominio contra sus competidores y genera un informe de venta con mensaje de contacto.",
+  "description": "Radar de Competencia: vigila los cambios en la web de la competencia (vía changedetection.io) y genera un resumen semanal con IA. Incluye un prospector SEO.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

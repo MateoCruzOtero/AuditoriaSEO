@@ -3,8 +3,8 @@ import Link from "next/link";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Prospector SEO",
-  description: "Diagnósticos SEO de prospectos con mensaje de contacto listo para enviar.",
+  title: "Radar de Competencia",
+  description: "Vigilá qué cambia en la web de tu competencia y recibí un resumen semanal con qué igualar.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -13,10 +13,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="es">
       <body>
         <header className="topbar no-print">
-          <Link href="/" className="brand">
-            <span className="brand-dot" /> Prospector SEO
-          </Link>
-          <span className="muted">{agency}</span>
+          <nav className="nav">
+            <Link href="/" className="brand">
+              <span className="brand-dot" /> Radar
+            </Link>
+            <Link href="/">Competencia</Link>
+            <Link href="/prospectos">Prospectos</Link>
+          </nav>
+          <span className="muted hide-mobile">{agency}</span>
         </header>
         <main className="container">{children}</main>
       </body>

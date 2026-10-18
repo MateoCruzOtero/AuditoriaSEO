@@ -64,3 +64,57 @@ export type ReportRow = {
   error: string | null;
   data: ReportData | null;
 };
+
+// ---------------------------------------------------------------------------
+// Vigilancia de la competencia
+// ---------------------------------------------------------------------------
+
+/** Una diferencia entre dos versiones de una página. */
+export type DiffItem =
+  | { type: "added"; text: string }
+  | { type: "removed"; text: string }
+  | { type: "changed"; before: string; after: string };
+
+export type WatchedPage = {
+  id: number;
+  competitorId: number;
+  label: string;
+  url: string;
+  /** Id de la página en changedetection (null en modo demo). */
+  watchUuid: string | null;
+};
+
+export type Competitor = {
+  id: number;
+  name: string;
+  website: string;
+  createdAt: string;
+  pages: WatchedPage[];
+};
+
+export type ChangeEvent = {
+  competitor: string;
+  pageLabel: string;
+  url: string;
+  /** ISO 8601 */
+  at: string;
+  items: DiffItem[];
+};
+
+export type DigestData = {
+  titulo: string;
+  resumen: string;
+  porCompetidor: { competidor: string; movimientos: string[] }[];
+  recomendaciones: { accion: string; porQue: string; prioridad: "alta" | "media" | "baja" }[];
+};
+
+export type Digest = {
+  id: string;
+  createdAt: string;
+  periodFrom: string;
+  periodTo: string;
+  changes: ChangeEvent[];
+  data: DigestData;
+  demo: { changes: boolean; ai: boolean };
+  aiCostUsd: number;
+};

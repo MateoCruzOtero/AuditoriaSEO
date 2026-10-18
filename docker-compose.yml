@@ -1,0 +1,27 @@
+# Levanta changedetection.io (el "vigilante") en http://localhost:5000
+#   docker compose up -d
+# Después: Settings → API → copiá la API key a CHANGEDETECTION_API_KEY en .env.local
+services:
+  changedetection:
+    image: ghcr.io/dgtlmoon/changedetection.io
+    container_name: changedetection
+    volumes:
+      - changedetection-data:/datastore
+    ports:
+      - 127.0.0.1:5000:5000
+    environment:
+      # Usa el navegador de abajo para sitios que cargan el contenido con JavaScript.
+      - PLAYWRIGHT_DRIVER_URL=ws://browser-sockpuppet-chrome:3000
+    restart: unless-stopped
+    depends_on:
+      - browser-sockpuppet-chrome
+
+  browser-sockpuppet-chrome:
+    image: dgtlmoon/sockpuppetbrowser:latest
+    container_name: browser-sockpuppet-chrome
+    cap_add:
+      - SYS_ADMIN
+    restart: unless-stopped
+
+volumes:
+  changedetection-data:

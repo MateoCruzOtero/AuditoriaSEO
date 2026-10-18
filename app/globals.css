@@ -92,3 +92,19 @@ td.num, th.num { text-align: right; white-space: nowrap; }
   .card { break-inside: avoid; border-color: #ddd; }
   .container { padding: 0; max-width: none; }
 }
+
+/* Vigilancia de la competencia */
+.nav { display: flex; gap: 1.25rem; align-items: center; }
+.nav a { color: var(--text); text-decoration: none; font-weight: 600; }
+.nav a:hover { color: var(--accent); }
+.page-row { display: grid; grid-template-columns: minmax(110px, 1fr) 3fr; gap: .5rem; margin-bottom: .5rem; }
+.diff { list-style: none; padding: 0; margin: .75rem 0 0; display: grid; gap: .4rem; font-size: .92rem; }
+.diff li { display: grid; gap: .2rem; }
+.diff del { background: var(--bad-soft); color: var(--bad); padding: .15rem .4rem; border-radius: 4px; }
+.diff ins { background: var(--ok-soft); color: var(--ok); padding: .15rem .4rem; border-radius: 4px; text-decoration: none; }
+.pill.alta { background: var(--bad-soft); color: var(--bad); }
+.pill.media { background: var(--accent-soft); color: var(--accent); }
+.pill.baja { background: var(--ok-soft); color: var(--ok); }
+@media (max-width: 600px) {
+  .hide-mobile { display: none; }
+}
