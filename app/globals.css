@@ -1,0 +1,94 @@
+:root {
+  --bg: #faf7f2;
+  --surface: #ffffff;
+  --text: #1d1b19;
+  --muted: #6b665f;
+  --border: #e7e1d8;
+  --accent: #d9542b;
+  --accent-soft: #fbe9e2;
+  --ok: #1f8a4c;
+  --ok-soft: #e3f4ea;
+  --bad: #c0392b;
+  --bad-soft: #fbe5e2;
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+}
+a { color: var(--accent); }
+h1, h2, h3 { line-height: 1.2; }
+h1 { font-size: 1.9rem; margin: 0 0 .25rem; }
+h2 { font-size: 1.25rem; margin: 2rem 0 .75rem; }
+
+.topbar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .9rem 1.25rem; border-bottom: 1px solid var(--border); background: var(--surface);
+}
+.brand { font-weight: 700; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: .5rem; }
+.brand-dot { width: 12px; height: 12px; border-radius: 3px; background: var(--accent); display: inline-block; }
+.container { max-width: 980px; margin: 0 auto; padding: 1.5rem 1rem 4rem; }
+.muted { color: var(--muted); }
+.small { font-size: .875rem; }
+
+.card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 1.25rem; margin-bottom: 1rem;
+}
+.grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+
+label { display: block; font-weight: 600; font-size: .9rem; margin-bottom: .3rem; }
+input, select, textarea {
+  width: 100%; padding: .6rem .7rem; border: 1px solid var(--border); border-radius: 8px;
+  font: inherit; background: var(--surface); color: var(--text);
+}
+.field { margin-bottom: 1rem; }
+.hint { font-size: .8rem; color: var(--muted); margin-top: .25rem; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: .4rem; border: 0; border-radius: 8px;
+  padding: .65rem 1.1rem; font: inherit; font-weight: 600; cursor: pointer;
+  background: var(--accent); color: #fff; text-decoration: none;
+}
+.btn:disabled { opacity: .6; cursor: wait; }
+.btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
+
+.error { background: var(--bad-soft); color: var(--bad); padding: .75rem 1rem; border-radius: 8px; margin-bottom: 1rem; }
+.banner { background: var(--accent-soft); border-radius: 8px; padding: .75rem 1rem; margin-bottom: 1rem; font-size: .9rem; }
+
+table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+th, td { text-align: left; padding: .55rem .5rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+td.num, th.num { text-align: right; white-space: nowrap; }
+.table-wrap { overflow-x: auto; }
+
+.stat-label { font-size: .8rem; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+.stat-value { font-size: 1.6rem; font-weight: 700; }
+.bar { height: 10px; border-radius: 5px; background: var(--border); overflow: hidden; }
+.bar > span { display: block; height: 100%; background: var(--accent); }
+.bar.you > span { background: var(--text); }
+
+.pill { display: inline-block; align-self: flex-start; flex: none; font-size: .75rem; font-weight: 700; padding: .1rem .5rem; border-radius: 999px; }
+.pill.alto { background: var(--bad-soft); color: var(--bad); }
+.pill.medio { background: var(--accent-soft); color: var(--accent); }
+.pill.bajo { background: var(--ok-soft); color: var(--ok); }
+.check { display: flex; gap: .6rem; padding: .5rem 0; border-bottom: 1px solid var(--border); }
+.check:last-child { border-bottom: 0; }
+.check-icon { font-weight: 700; width: 1.2rem; flex: none; }
+.check-icon.ok { color: var(--ok); }
+.check-icon.bad { color: var(--bad); }
+.message { white-space: pre-wrap; background: var(--bg); border-radius: 8px; padding: 1rem; font-size: .93rem; }
+.row { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; }
+.spacer { flex: 1; }
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff; }
+  .card { break-inside: avoid; border-color: #ddd; }
+  .container { padding: 0; max-width: none; }
+}
